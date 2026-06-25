@@ -4,6 +4,8 @@ from dataclasses import dataclass
 
 import numpy as np
 
+from .model import sinusoid_model
+
 
 @dataclass(frozen=True)
 class SyntheticData:
@@ -72,7 +74,13 @@ def generate_synthetic_data(
 
     rng = np.random.default_rng(random_seed)
     time = np.linspace(0.0, 1.0, n_points)
-    truth = amplitude * np.sin(2.0 * np.pi * frequency * time + phase) + offset
+    truth = sinusoid_model(
+        time=time,
+        amplitude=amplitude,
+        frequency=frequency,
+        phase=phase,
+        offset=offset,
+    )
     uncertainty = np.full(n_points, noise_std)
     flux = truth + rng.normal(0.0, noise_std, size=n_points)
 

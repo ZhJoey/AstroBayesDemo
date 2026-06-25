@@ -15,17 +15,38 @@ python -m pip install -e ".[test]"
 ## Quick Start
 
 ```python
-from astro_bayes_demo import generate_synthetic_data
+import numpy as np
+
+from astro_bayes_demo import compute_posterior_grid, generate_synthetic_data
 
 data = generate_synthetic_data(n_points=50, random_seed=42)
 
-print(data.time[:3])
-print(data.flux[:3])
+posterior = compute_posterior_grid(
+    time=data.time,
+    flux=data.flux,
+    uncertainty=data.uncertainty,
+    amplitudes=np.linspace(0.0, 3.0, 101),
+    offsets=np.linspace(-1.0, 1.0, 101),
+)
+
+print(posterior.best_amplitude)
+print(posterior.best_offset)
 ```
 
 The first version of the package generates a noisy sinusoidal signal with known
 truth. This gives us a controlled dataset for testing Bayesian inference methods
 before moving to more complex astronomy or VLBI-like examples.
+
+## Run The Demo
+
+```bash
+python examples/basic_demo.py
+```
+
+The demo saves two figures in `outputs/`:
+
+- `data_with_best_model.png`
+- `posterior_grid.png`
 
 ## Run Tests
 
