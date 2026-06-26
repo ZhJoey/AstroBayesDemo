@@ -6,11 +6,33 @@ extending these ideas toward later PhD work.
 
 ## Install
 
-From the project root:
+For development, install the local project in editable mode from the project
+root:
 
 ```bash
 python -m pip install -e ".[test]"
 ```
+
+The `-e` flag means edits to files in `src/astro_bayes_demo/` are immediately
+available in the installed package. The `[test]` extra installs `pytest`.
+
+To install the test release from TestPyPI:
+
+```bash
+python -m pip install \
+  --index-url https://test.pypi.org/simple/ \
+  --extra-index-url https://pypi.org/simple/ \
+  astro-bayes-demo
+```
+
+After a future release to the main PyPI index, install with:
+
+```bash
+python -m pip install astro-bayes-demo
+```
+
+The package is installed as `astro-bayes-demo`, but imported in Python as
+`astro_bayes_demo`.
 
 ## Quick Start
 
