@@ -1,4 +1,7 @@
 # AstroBayesDemo
+
+[![A rectangular badge, half black half purple containing the text made at Code Astro](https://img.shields.io/badge/Made%20at-Code/Astro-blueviolet.svg)](https://semaphorep.github.io/codeastro/)
+
 A small demo for the Code/Astro workshop to run the complete workflow from
 coding, documentation, testing, and releasing code on GitHub. The scientific
 goal is to build a small framework for understanding Bayesian inference before
@@ -75,3 +78,13 @@ The demo saves two figures in `outputs/`:
 ```bash
 python -m pytest
 ```
+
+## Future Outlook
+
+Planned extensions include:
+
+- Add Markov chain Monte Carlo (MCMC) sampling for posterior exploration.
+- Add corner plots for visualizing parameter constraints and correlations.
+- Extend the demo to real or more realistic simulated astronomy data.
+- Compare Bayesian inference results with the ZAGROS software by Iniyan.
+- Explore applications to geodetic VLBI data.
